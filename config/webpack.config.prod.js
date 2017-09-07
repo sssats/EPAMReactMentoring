@@ -6,7 +6,8 @@ module.exports = {
 	entry: [path.resolve(__dirname, '../front/src/jsx/app.jsx')],
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, '../server/public')
+		path: path.resolve(__dirname, '../server/public'),
+		publicPath: path.resolve(__dirname, '../server/public')
 	},
 	resolve: {
 		extensions: ['.js', '.jsx']
