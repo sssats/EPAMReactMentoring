@@ -1,12 +1,12 @@
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const extractCSS = new ExtractTextPlugin("/styles/[name].css");
 
 module.exports = {
-	entry: ['./front/src/jsx/app.jsx',
-	],
+	entry: [path.resolve(__dirname, '../front/src/jsx/app.jsx')],
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'front/public'),
-		publicPath: '/front/public'
+		path: path.resolve(__dirname, '../server/public')
 	},
 	resolve: {
 		extensions: ['.js', '.jsx']
@@ -15,7 +15,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.scss$/,
-				use: ["style-loader", "css-loader", "sass-loader"]
+				use: extractCSS.extract(["css-loader", "sass-loader"])
 			},
 			{
 				test: /\.jsx$/,
@@ -26,5 +26,5 @@ module.exports = {
 				}
 			}]
 	},
-	devtool: 'inline-source-map'
+	plugins: [extractCSS]
 };

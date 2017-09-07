@@ -3,11 +3,10 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractCSS = new ExtractTextPlugin("/styles/[name].css");
 
 module.exports = {
-	entry: ['./front/src/jsx/app.jsx',
-	],
+	entry: [path.resolve(__dirname, '../front/src/jsx/app.jsx')],
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'front/public')
+		path: path.resolve(__dirname, '../server/public')
 	},
 	resolve: {
 		extensions: ['.js', '.jsx']
@@ -27,5 +26,6 @@ module.exports = {
 				}
 			}]
 	},
+	devtool: 'inline-source-map',
 	plugins: [extractCSS]
 };
