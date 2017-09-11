@@ -3,9 +3,6 @@ const webpack = require('webpack');
 const app = express();
 const webpackConfig = require('../config/webpack.config.dev');
 const compiler = webpack(webpackConfig);
-const NODE_ENV = process.env.NODE_ENV;
-
-console.log(NODE_ENV)
 
 app.use(require("webpack-dev-middleware")(compiler,
 	{
@@ -14,4 +11,8 @@ app.use(require("webpack-dev-middleware")(compiler,
 	}
 ));
 app.use(require("webpack-hot-middleware")(compiler));
+app.get("/", function(req, res) {
+	res.sendFile(__dirname + '/public/index.html')
+})
+
 app.listen(3000);

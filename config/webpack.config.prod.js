@@ -27,5 +27,7 @@ module.exports = {
 				}
 			}]
 	},
-	plugins: [extractCSS]
+	plugins: [
+		extractCSS
+	]
 };

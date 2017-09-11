@@ -2,11 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-	entry: [path.resolve(__dirname, '../front/src/jsx/app.jsx')],
+	entry: [
+		path.resolve(__dirname, '../front/src/jsx/app.jsx'),
+		'webpack-hot-middleware/client'],
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, '../server/public'),
-		publicPath: '../server/public'
+		publicPath: path.resolve(__dirname, '../server/public')
 	},
 	resolve: {
 		extensions: ['.js', '.jsx']
@@ -28,6 +30,7 @@ module.exports = {
 	},
 	devtool: 'inline-source-map',
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoEmitOnErrorsPlugin()
 	]
 };
