@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import HomePage from './pages/home';
+import DetailPage from './pages/details'
+
 import '../sass/style.scss'
 
 ReactDOM.render(
-	<div>
-		<h1>Hi, you are on Netflix Roulette)</h1>
-	</div>,
-	document.getElementById('root')
+    <DetailPage/>,
+    document.getElementById('root')
 );
 
 module.hot.accept();
